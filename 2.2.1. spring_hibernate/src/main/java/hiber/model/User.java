@@ -19,8 +19,9 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   public User() {}
-   
+   public User() {
+   }
+
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
@@ -30,7 +31,6 @@ public class User {
    @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "car_id")
    private Car car;
-
 
 
    public Long getId() {
@@ -71,7 +71,7 @@ public class User {
 
    public User setCar(Car car) {
       this.car = car;
-       return this;
+      return this;
    }
 
    @Override

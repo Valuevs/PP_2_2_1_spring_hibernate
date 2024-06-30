@@ -11,10 +11,10 @@ public class Car {
     private Long id;
 
     @Column(name = "model")
-    private  String model;
+    private String model;
 
     @Column(name = "series")
-    private  int series;
+    private int series;
 
     public Car() {
     }

@@ -12,41 +12,37 @@ import java.util.List;
 
 public class MainApp {
    public static void main(String[] args) throws SQLException {
-      AnnotationConfigApplicationContext context = 
-            new AnnotationConfigApplicationContext(AppConfig.class);
+      AnnotationConfigApplicationContext context =
+              new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
 
-      userService.add(new User( "User1", "Lastname1", "user1@mail.ru").setCar(new Car("Range Rover",1)));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru").setCar(new Car("Skoda",2)));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru").setCar(new Car("Ford",3)));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru").setCar(new Car("Volvo",4)));
-
-
-
-
+      userService.add(new User("User1", "Lastname1", "user1@mail.ru").setCar(new Car("Range Rover", 1)));
+      userService.add(new User("User2", "Lastname2", "user2@mail.ru").setCar(new Car("Skoda", 2)));
+      userService.add(new User("User3", "Lastname3", "user3@mail.ru").setCar(new Car("Ford", 3)));
+      userService.add(new User("User4", "Lastname4", "user4@mail.ru").setCar(new Car("Volvo", 4)));
 
 
       List<User> users = userService.listUsers();
       for (User user : users) {
-         System.out.println("Id = "+user.getId());
-         System.out.println("First Name = "+user.getFirstName());
-         System.out.println("Last Name = "+user.getLastName());
-         System.out.println("Email = "+user.getEmail());
-         System.out.println("Car = "+user.getCar());
+         System.out.println("Id = " + user.getId());
+         System.out.println("First Name = " + user.getFirstName());
+         System.out.println("Last Name = " + user.getLastName());
+         System.out.println("Email = " + user.getEmail());
+         System.out.println("Car = " + user.getCar());
       }
       System.out.println();
 
-      User user = userService.getUserByIdWithPlainQuery("Range Rover",1);
-      System.out.println("Id = "+user.getId()+" First Name = "+user.getFirstName() +
-              " Last Name = "+user.getLastName() + "Email =" + user.getEmail() + " Car = "+user.getCar() );
+      User user = userService.getUserByIdWithPlainQuery("Range Rover", 1);
+      System.out.println("Id = " + user.getId() + " First Name = " + user.getFirstName() +
+              " Last Name = " + user.getLastName() + "Email =" + user.getEmail() + " Car = " + user.getCar());
 
 
       try {
-         User Exception = userService.getUserByIdWithPlainQuery("MB",88);
+         User Exception = userService.getUserByIdWithPlainQuery("MB", 88);
       } catch (NoResultException e) {
          System.out.println("Not Found");
       }
-       context.close();
+      context.close();
    }
 }
